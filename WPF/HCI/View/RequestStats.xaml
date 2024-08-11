@@ -1,0 +1,87 @@
+﻿<Page x:Class="BookingApp.WPF.HCI.View.RequestStats"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:dvc="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
+       
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="RequestStats">
+
+    <Page.Resources>
+        <Style x:Key="H1" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+        </Style>
+        <Style x:Key="H2" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        </Page.Resources>
+
+
+    <Grid Margin="30,70,30,70">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Button Margin="0,0,0,45" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"  VerticalAlignment="Top" Style="{StaticResource ResourceKey=Nav}" Content="◀ Back to requests"></Button>
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource ResourceKey=H1}" Text="Your requests for "/>
+                <TextBlock Style="{StaticResource ResourceKey=H1}" Text="{Binding SelectedYear}"/>
+            </StackPanel>
+            <TextBlock Style="{StaticResource ResourceKey=H2}" Text="Hint: Use filter to change displayed year"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Label>Filter:</Label>
+            <ComboBox x:Name="Year" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" ItemsSource="{Binding AllYears}" Width="Auto" SelectionChanged="Year_SelectionChanged" />
+        </StackPanel>
+
+        <dvc:Chart Grid.Column="1" Grid.Row="3" Title="Language preferences" Name="chart" Height="256">
+            <dvc:Chart.LegendStyle>
+                <Style TargetType="Control">
+                    <Setter Property="Width" Value="0" />
+                    <Setter Property="Height" Value="0" />
+                </Style>
+            </dvc:Chart.LegendStyle>
+            <dvc:ColumnSeries DependentValuePath="Value" Width="Auto" IndependentValuePath="Key" ItemsSource="{Binding LanguageHistogramData}" />
+        </dvc:Chart>
+        
+        <dvc:Chart Grid.Column="2" Grid.Row="3" Title="Location preferences" Name="locchart" Height="256">
+            <dvc:Chart.LegendStyle>
+                <Style TargetType="Control">
+                    <Setter Property="Width" Value="0" />
+                    <Setter Property="Height" Value="0" />
+                </Style>
+            </dvc:Chart.LegendStyle>
+            <dvc:ColumnSeries DependentValuePath="Value" Width="Auto" IndependentValuePath="Key" ItemsSource="{Binding LocationHistogramData}" />
+        </dvc:Chart>
+
+        <dvc:Chart Title="Approval Rate" Grid.Column="0" Grid.Row="3" Height="256">
+            <dvc:PieSeries ItemsSource="{Binding PieData}" IndependentValuePath="Key" DependentValuePath="Value" />
+        </dvc:Chart>
+
+
+        <StackPanel Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource ResourceKey=H2}" Text="On average, your tours that have been approved consisted of "/>
+            <TextBlock Style="{StaticResource ResourceKey=H2}" Text="{Binding AvgPeople}"/>
+            <TextBlock Style="{StaticResource ResourceKey=H2}" Text=" people."/>
+        </StackPanel>
+
+
+    </Grid>
+</Page>

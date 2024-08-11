@@ -1,0 +1,49 @@
+﻿<Page x:Class="BookingApp.WPF.HCI.View.Help"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookingApp.WPF.HCI.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Help">
+
+    <Grid Margin="0,0,0,60">
+        <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Image Margin="10" Source="pack://application:,,,/Resources/Images/help.png" Stretch="UniformToFill" Width="30" Height="30"/>
+            <TextBlock Style="{StaticResource ResourceKey=H1}"> Help And FAQ</TextBlock>
+        </StackPanel>
+        <TreeView Name="MenuTreeView"  Grid.Row="1" Margin="10">
+            <TreeViewItem Header="What is Demo mode and how do I start it?" IsExpanded="False">
+                <TextBlock Text="Description for Demo mode and how to start it." TextWrapping="Wrap" Margin="10"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Tours And Compound (Special) Tours" IsExpanded="False">
+                <TreeViewItem Header="General Tour and Reservation FAQ">
+                    <TextBlock Text="Description for General Tour and Reservation FAQ." TextWrapping="Wrap" Margin="10"/>
+                </TreeViewItem>
+                <TreeViewItem Header="How do I submit a Tour Request?">
+                    <TextBlock Text="Description for submitting a Tour Request." TextWrapping="Wrap" Margin="10"/>
+                </TreeViewItem>
+                <TreeViewItem Header="What is a Compound Tour?">
+                    <TextBlock Text="Description for what a Compound Tour is." TextWrapping="Wrap" Margin="10"/>
+                </TreeViewItem>
+                <TreeViewItem Header="How do I submit a request for Compound Tour?">
+                    <TextBlock Text="Description for submitting a request for a Compound Tour." TextWrapping="Wrap" Margin="10"/>
+                </TreeViewItem>
+            </TreeViewItem>
+            <TreeViewItem Header="Vouchers" IsExpanded="False">
+                <TextBlock Text="Description for Vouchers." TextWrapping="Wrap" Margin="10"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Fair Use" IsExpanded="False">
+                <TextBlock Text="Description for Fair Use." TextWrapping="Wrap" Margin="10"/>
+            </TreeViewItem>
+        </TreeView>
+
+    </Grid>
+</Page>

@@ -1,0 +1,26 @@
+﻿<Window x:Class="BookingApp.View.OwnerRatingsForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookingApp.View"
+        mc:Ignorable="d"
+        Title="OwnerRatingsForm" Height="450" Width="800">
+    <Grid>
+        <DataGrid ItemsSource="{Binding OwnerRatingsDto}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Guest" Binding="{Binding guestUsername}" />
+                <DataGridTextColumn Header="Owner" Binding="{Binding ownerUsername}" />
+                <DataGridTextColumn Header="Accommodation" Binding="{Binding accommodationName}" />
+                <DataGridTextColumn Header="Days" Binding="{Binding accommodationReservation.ReservationDays}" />
+                <DataGridTextColumn Header="Guests" Binding="{Binding accommodationReservation.GuestNumber}" />
+                <DataGridTextColumn Header="Start" Binding="{Binding accommodationReservation.StartDate}" />
+                <DataGridTextColumn Header="End" Binding="{Binding accommodationReservation.EndDate}" />
+                <DataGridTextColumn Header="Cleanliness" Binding="{Binding Cleanliness}" />
+                <DataGridTextColumn Header="Corectness" Binding="{Binding OwnerCorectness}" />
+                <DataGridTextColumn Header="Comment" Binding="{Binding Comment}" />
+                <DataGridTextColumn Header="Photos" Binding="{Binding Photos}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

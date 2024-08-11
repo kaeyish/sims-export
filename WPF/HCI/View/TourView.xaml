@@ -1,0 +1,146 @@
+﻿<Page x:Class="BookingApp.WPF.HCI.View.TourView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookingApp.WPF.HCI.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="Tour">
+
+    <Grid Margin="30,0,30,70">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Column="0" Grid.Row="0" Margin="0,15,0,25" VerticalAlignment="Top" Style="{StaticResource ResourceKey=Nav}" Name="Back" Click="Back_Click" Content="◀ Back to Tours"></Button>
+
+        <TextBlock 
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            Style="{StaticResource H1}"
+            Text="{Binding Tour.Name}"
+            />
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            Style="{StaticResource H2}"
+            Text="{Binding Tour.Location}"
+            />
+        
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Left"
+            Style="{StaticResource H2}"
+            Text="Description"
+            />
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="0"
+            Style="{StaticResource H3}"
+            
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            TextWrapping="Wrap"
+            Text="{Binding Tour.Description}" 
+            TextAlignment="Justify"            />
+        <TextBlock
+              Grid.Row="4"
+              Grid.Column="1"
+              Margin="5,5,5,5"
+              VerticalAlignment="Top"
+              HorizontalAlignment="Center"
+              Height="80"
+              Width="60"
+                >
+                <StackPanel>
+                    <Image Source="pack://application:,,,/Resources/Images/star.png"/>
+                    <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Text="{Binding Tour.Rating}"/>
+                </StackPanel>
+            </TextBlock>
+
+        <TextBlock
+            Grid.Row="5"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Text="Checkpoints"
+            Style="{StaticResource H2}"
+            />
+
+        <TextBlock
+            Grid.Row="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="2">
+            <StackPanel>
+            <ListView ItemsSource="{Binding PicturePaths}">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding}" Width="305" Height="300"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+                   <ListView ItemsSource="{Binding Checkpoints}" BorderThickness="0">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Style="{StaticResource H2}" Text="{Binding}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+            </ListView>
+            </StackPanel>
+        </TextBlock>
+
+        <StackPanel Grid.Column="0" Grid.Row="7" Orientation="Horizontal">
+            <TextBlock Style="{StaticResource ResourceKey=H2}" Text="Duration: "/>
+            <TextBlock Style="{StaticResource ResourceKey=H2}" Text="{Binding Tour.Duration}"/>
+            <TextBlock Style="{StaticResource ResourceKey=H2}" Text="h."/>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="0" Grid.Row="8" Orientation="Horizontal">
+            <TextBlock Style="{StaticResource ResourceKey=H2}" Text="Available Dates: "/>
+            <TextBlock Style="{StaticResource ResourceKey=H2}" Text="{Binding Dates}"/>
+        </StackPanel>
+
+
+        <Button Grid.Column="1" Name="Reserve" Click="Reserve_Click" Grid.Row="8" Style="{StaticResource Buttons}" Content="Reserve"/>
+
+
+
+
+
+
+
+
+
+
+    </Grid>
+</Page>

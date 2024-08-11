@@ -1,0 +1,23 @@
+﻿<Window x:Class="BookingApp.WPF.View.RenovationForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookingApp.WPF.View"
+        mc:Ignorable="d"
+        Title="RenovationForm" Height="450" Width="800">
+    <Grid>
+        <DataGrid ItemsSource="{Binding Renovations}" AutoGenerateColumns="False" Margin="232,0,268,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="AccommodationId" Binding="{Binding AccommodationId}" />
+                <DataGridTextColumn Header="OwnerId" Binding="{Binding OwnerId}" />
+                <DataGridTextColumn Header="StartDate" Binding="{Binding StartDate}" />
+                <DataGridTextColumn Header="EndDate" Binding="{Binding EndDate}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Id of renovation to cancel:" HorizontalAlignment="Left" Margin="14,22,0,0" VerticalAlignment="Top" Height="39" Width="160"/>
+        <TextBox x:Name="IdToCancel" HorizontalAlignment="Left" Margin="23,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Text="sdsddssd"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Height="21" Margin="94,53,0,0" VerticalAlignment="Top" Width="58" Click="Button_Click"/>
+    </Grid>
+</Window>

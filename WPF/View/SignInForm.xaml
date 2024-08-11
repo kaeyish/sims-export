@@ -29,8 +29,10 @@
             <TextBox Grid.Row="0" Text="{Binding Path=Username, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="25" TextWrapping="Wrap" VerticalAlignment="Center"/>
             <PasswordBox Name="txtPassword" Grid.Row="1" Grid.Column="1" Height="25" VerticalAlignment="Center"/>
         </Grid>
-        
-        <Button Grid.Row="2" Click="SignIn" Content="Sign in" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="60"/>
 
+        <StackPanel Grid.Row="2">
+            <Label HorizontalAlignment="Center" FontSize="10">Testing credentials | Username: Janko | Password: janko123</Label>
+            <Button Click="SignIn" Content="Sign in" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="60"/>
+        </StackPanel>
     </Grid>
 </Window>
